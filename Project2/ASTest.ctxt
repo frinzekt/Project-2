@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=ASTest
+comment0.text=\r\n\ This\ class\ provides\ unit\ test\ cases\ for\ the\ AnalyzeSolution\ class.\ \r\n\ @author\ Lyndon\ While\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
+comment2.params=s\ a\ b
+comment2.target=java.lang.String\ substring(java.lang.String,\ int,\ int)
+comment3.params=
+comment3.target=void\ testlinesAroundSquare()
+comment4.params=
+comment4.target=void\ testbadSquares()
+comment5.params=
+comment5.target=void\ testgetConnections()
+comment6.params=
+comment6.target=void\ testtracePath()
+comment7.params=
+comment7.target=void\ testlineSegments()
+comment8.params=
+comment8.target=void\ testfinished()
+numComments=9

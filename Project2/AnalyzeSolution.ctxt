@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=AnalyzeSolution
+comment1.params=
+comment1.target=AnalyzeSolution()
+comment1.text=\r\n\ We\ don't\ need\ to\ create\ any\ objects\ of\ class\ AnalyzeSolution;\ all\ of\ its\ methods\ are\ static.\r\n
+comment2.params=p\ r\ c
+comment2.target=int\ linesAroundSquare(Project2.Puzzle,\ int,\ int)
+comment2.text=\r\n\ Returns\ the\ number\ of\ line\ segments\ surrounding\ Square\ r,c\ in\ p.\r\n\ Returns\ 0\ if\ the\ indices\ are\ illegal.\r\n
+comment3.params=p
+comment3.target=badSquares(Project2.Puzzle)
+comment3.text=\r\n\ Returns\ all\ squares\ in\ p\ that\ are\ surrounded\ by\ the\ wrong\ number\ of\ line\ segments.\r\n\ Each\ item\ on\ the\ result\ will\ be\ an\ int[2]\ containing\ the\ indices\ of\ a\ square.\r\n\ The\ order\ of\ the\ items\ on\ the\ result\ is\ unimportant.\r\n
+comment4.params=p\ r\ c
+comment4.target=getConnections(Project2.Puzzle,\ int,\ int)
+comment4.text=\r\n\ Returns\ all\ dots\ connected\ by\ a\ single\ line\ segment\ to\ Dot\ r,c\ in\ p.\r\n\ Each\ item\ on\ the\ result\ will\ be\ an\ int[2]\ containing\ the\ indices\ of\ a\ dot.\r\n\ The\ order\ of\ the\ items\ on\ the\ result\ is\ unimportant.\r\n\ Returns\ null\ if\ the\ indices\ are\ illegal.\r\n
+comment5.params=p
+comment5.target=int[]\ lineSegments(Project2.Puzzle)
+comment5.text=\r\n\ Returns\ an\ array\ of\ length\ 3\ whose\ first\ element\ is\ the\ number\ of\ line\ segments\ in\ the\ puzzle\ p,\ \r\n\ and\ whose\ other\ elements\ are\ the\ indices\ of\ a\ dot\ on\ any\ one\ of\ those\ segments.\ \r\n\ Returns\ {0,0,0}\ if\ there\ are\ no\ line\ segments\ on\ the\ board.\ \r\n
+comment6.params=p\ r\ c
+comment6.target=java.lang.String\ tracePath(Project2.Puzzle,\ int,\ int)
+comment6.text=\r\n\ Tries\ to\ trace\ a\ closed\ loop\ starting\ from\ Dot\ r,c\ in\ p.\ \r\n\ Returns\ either\ an\ appropriate\ error\ message,\ or\ \r\n\ the\ number\ of\ steps\ in\ the\ closed\ loop\ (as\ a\ String).\ \r\n\ See\ the\ project\ page\ and\ the\ JUnit\ for\ a\ description\ of\ the\ messages\ expected.\ \r\n
+comment7.params=p
+comment7.target=java.lang.String\ finished(Project2.Puzzle)
+comment7.text=\r\n\ Returns\ a\ message\ on\ whether\ the\ puzzle\ p\ is\ finished.\ \r\n\ p\ is\ finished\ iff\ all\ squares\ are\ good,\ and\ all\ line\ segments\ form\ a\ single\ closed\ loop.\ \r\n\ An\ algorithm\ is\ given\ on\ the\ project\ page.\ \r\n\ See\ the\ project\ page\ and\ the\ JUnit\ for\ a\ description\ of\ the\ messages\ expected.\r\n
+numComments=8

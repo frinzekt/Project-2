@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=SLTest
+comment0.text=\r\n\ This\ class\ provides\ unit\ test\ cases\ for\ the\ SlitherLink\ class.\ \r\n\ Note\ that\ visual\ displays\ are\ not\ tested\ in\ JUnit.\r\n\ @author\ Lyndon\ While\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
+comment2.params=
+comment2.target=void\ testSlitherLink()
+comment3.params=
+comment3.target=void\ testhorizontalClick()
+comment4.params=
+comment4.target=void\ testverticalClick()
+numComments=5
