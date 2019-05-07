@@ -1,4 +1,4 @@
-package Project2;
+ 
 
 /**
  * This is a stripped-down version of the Canvas class from the 

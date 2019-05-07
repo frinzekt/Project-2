@@ -1,4 +1,4 @@
-package Project2;
+ 
 
 
 /**
@@ -25,6 +25,22 @@ public class Puzzle
     public Puzzle(String filename)
     {
         // COMPLETE THIS 1b
+        FileIO file = new FileIO(filename);
+        //str = file getLines(); 
+        
+        
+        ArrayList<String> lines = file.getLines();
+        
+        int row_num = lines.size();
+        
+        for (int j = 0; j<row_num;j++){
+            String[] line = lines.get(j).split("\\s+"); // \\s+ removes space 
+            int col_num = line.length;
+            for(int i = 0; i<col_num;i++){
+                puzzle[i][j] = Integer.parseInt(line[i]);
+            }
+        }
+        
     }
     
     /**
@@ -76,6 +92,7 @@ public class Puzzle
     public void parseFile(ArrayList<String> lines)
     {
         // COMPLETE THIS 1a
+        
     }
     
     /**

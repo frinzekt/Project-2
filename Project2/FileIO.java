@@ -1,4 +1,4 @@
-package Project2;
+ 
 
 /**
  * Reads a file into an ArrayList of strings
