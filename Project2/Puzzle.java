@@ -114,7 +114,7 @@ public class Puzzle
     public void horizontalClick(int r, int c)
     {
         // COMPLETE THIS 2a
-
+        
         if( (0<=r) && (r<horizontal.length) ){ //ROW CHECK
             if( (0<=c) && (c<horizontal[0].length) ){ //COL CHECK
                 horizontal[r][c] = horizontal[r][c] != true;
