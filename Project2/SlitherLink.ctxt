@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.target=SlitherLink
 comment1.params=p
-comment1.target=SlitherLink(Project2.Puzzle)
+comment1.target=SlitherLink(Puzzle)
 comment1.text=\r\n\ Creates\ a\ display\ for\ playing\ the\ puzzle\ p.\r\n
 comment10.params=e
 comment10.target=void\ mouseEntered(java.awt.event.MouseEvent)
 comment11.params=e
 comment11.target=void\ mouseExited(java.awt.event.MouseEvent)
 comment2.params=
-comment2.target=Project2.Puzzle\ getGame()
+comment2.target=Puzzle\ getGame()
 comment2.text=\r\n\ Returns\ the\ current\ state\ of\ the\ game.\r\n
 comment3.params=
-comment3.target=Project2.SimpleCanvas\ getCanvas()
+comment3.target=SimpleCanvas\ getCanvas()
 comment3.text=\r\n\ Returns\ the\ current\ state\ of\ the\ canvas.\r\n
 comment4.params=
 comment4.target=void\ displayPuzzle()
