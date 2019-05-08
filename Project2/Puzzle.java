@@ -2,7 +2,7 @@
 /**
  * Puzzle maintains the internal representation of a square Slither Link puzzle.
  * 
- * @author Lyndon While
+ * @author Frinze Lapuz & Ethan Pui
  * @version 1.0
  */
 import java.util.ArrayList;

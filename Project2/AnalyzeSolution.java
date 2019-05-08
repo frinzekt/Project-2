@@ -5,7 +5,7 @@
  * AnalyzeSolution methods are used to analyze the state of a Slither Link puzzle, 
  * to determine if the puzzle is finished. 
  * 
- * @author Lyndon While
+ * @author Frinze Lapuz & Ethan Pui
  * @version v1.0
  */
 import java.util.*;

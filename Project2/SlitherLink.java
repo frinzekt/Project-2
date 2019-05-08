@@ -3,7 +3,7 @@
 /**
  * SlitherLink does the user interaction for a square Slither Link puzzle.
  * 
- * @author Lyndon While 
+ * @author Frinze Lapuz & Ethan Pui
  * @version 1.0
  */
 import java.awt.*;
@@ -140,13 +140,22 @@ public class SlitherLink implements MouseListener
     public void mousePressed(MouseEvent e) 
     {
         // COMPLETE THIS 6
+        mousePressed(e);
     }
 
-    public void mouseClicked(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {
+        mouseClicked(e);
+    }
 
-    public void mouseReleased(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {
+        mouseReleased(e);
+    }
 
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+        mouseEntered(e);
+    }
 
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+        mouseExited(e);
+    }
 }
