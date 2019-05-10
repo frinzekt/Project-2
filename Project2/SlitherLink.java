@@ -1,5 +1,6 @@
 
 
+
 /**
  * SlitherLink does the user interaction for a square Slither Link puzzle.
  * 
@@ -195,16 +196,20 @@ public class SlitherLink implements MouseListener
         
         int square_center = square_size/2;
         
+        //ACOUNTS FOR THE BORDER
+        int x = e.getX()-border;
+        int y = e.getY()-border;
+        
         //GETS x -> col equivalent to a box/square
         //     y -> row
-        int square_x = e.getX()/square_size ;
-        int square_y = e.getY()/square_size;
+        int square_x = x/square_size;
+        int square_y = y/square_size;
         
         //Conversion of an xy coordinate to single square AKA Origin Square
         //Origin Square - the square (0,0)
         
-        int origin_x = e.getX() - square_size * square_x;
-        int origin_y = e.getY() - square_size * square_y;
+        int origin_x = x - square_size * square_x;
+        int origin_y = y - square_size * square_y;
         
         //Figure out where click refers to -> vertical or horizontal click
         //by looking at the minimum distance to the bound of the origin
