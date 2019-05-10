@@ -125,7 +125,7 @@ public class SlitherLink implements MouseListener
     {
         // COMPLETE THIS 5b
         //Vertical lines: the board can have n+1 vertical lines across, but only n rows of these down.
-
+            
         if( (0<=r) && (r<game.getRowSize()) ){ //ROW CHECK
             if( (0<=c) && (c<game.getColSize()+1) ){ //COL CHECK
                 game.verticalClick(r,c);
@@ -144,18 +144,14 @@ public class SlitherLink implements MouseListener
     }
 
     public void mouseClicked(MouseEvent e) {
-        mouseClicked(e);
     }
 
-    public void mouseReleased(MouseEvent e) {
-        mouseReleased(e);
+    public void mouseReleased(MouseEvent e) {   
     }
 
-    public void mouseEntered(MouseEvent e) {
-        mouseEntered(e);
+    public void mouseEntered(MouseEvent e) { 
     }
 
     public void mouseExited(MouseEvent e) {
-        mouseExited(e);
     }
 }

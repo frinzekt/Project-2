@@ -24,6 +24,7 @@ public class AnalyzeSolution
     public static int linesAroundSquare(Puzzle p, int r, int c)
     {
         // COMPLETE THIS 7
+        
         return 0;
     }
     
