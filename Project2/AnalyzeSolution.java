@@ -1,11 +1,9 @@
- 
-
 
 /**
  * AnalyzeSolution methods are used to analyze the state of a Slither Link puzzle, 
  * to determine if the puzzle is finished. 
  * 
- * @author Frinze Lapuz & Ethan Pui
+ * @author  Ethan Pui & Frinze Lapuz
  * @version v1.0
  */
 import java.util.*;
@@ -24,10 +22,26 @@ public class AnalyzeSolution
     public static int linesAroundSquare(Puzzle p, int r, int c)
     {
         // COMPLETE THIS 7
-        
-        return 0;
+        int lines_num = 0;
+        boolean[][] horiz = p.getHorizontal();
+        boolean[][] veriz = p.getVertical();
+
+        if(horiz[r][c] == true){
+            lines_num += 1;
+        }
+        if(horiz[r + 1][c] == true){
+            lines_num += 1;
+        }
+        if(veriz[r][c] == true){
+            lines_num += 1;
+        }
+        if(veriz[r][c+1] == true){
+            lines_num += 1;
+        }
+        return lines_num;
     }
-    
+
+
     /**
      * Returns all squares in p that are surrounded by the wrong number of line segments.
      * Each item on the result will be an int[2] containing the indices of a square.
@@ -36,6 +50,7 @@ public class AnalyzeSolution
     public static ArrayList<int[]> badSquares(Puzzle p)
     {
         // COMPLETE THIS 8
+        
         return null;
     }
 
@@ -61,7 +76,7 @@ public class AnalyzeSolution
         // COMPLETE THIS 10
         return null;
     }
-    
+
     /**
      * Tries to trace a closed loop starting from Dot r,c in p. 
      * Returns either an appropriate error message, or 
@@ -73,7 +88,7 @@ public class AnalyzeSolution
         // COMPLETE THIS 11
         return "";
     }
-    
+
     /**
      * Returns a message on whether the puzzle p is finished. 
      * p is finished iff all squares are good, and all line segments form a single closed loop. 
