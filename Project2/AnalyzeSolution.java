@@ -41,7 +41,7 @@ public class AnalyzeSolution
         if(lines_num > 0){
             return lines_num;
         }
-        return 0;
+        return 0; //returns 0 if index is illegal
     }
 
 
@@ -53,15 +53,19 @@ public class AnalyzeSolution
     public static ArrayList<int[]> badSquares(Puzzle p)
     {
         // COMPLETE THIS 8
-        
-        //# 1. If statment, square is surrounded by wrong no. of lines, then add to Arraylist int[]
-        
-        if(lines_num != p.Puzzle[i][j]){
-            
+        //Initialization, ArrayList<int[2]>
+        ArrayList<int[]> BadSquares = new ArrayList<>();
+
+        for (int i=0; i<p.getRowSize(); i++){
+            for(int j =0; j<p.getColSize();j++){
+                if((linesAroundSquare(p,i,j)!= p.getPuzzle()[i][j]) && p.getPuzzle()[i][j]!=-1){
+                    int[] coordinates = {i,j};
+                    BadSquares.add(coordinates);
+                }
+            }
         }
         
-        
-        return null;
+        return BadSquares;
     }
 
     /**
