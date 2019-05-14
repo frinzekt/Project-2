@@ -54,7 +54,11 @@ public class AnalyzeSolution
     {
         // COMPLETE THIS 8
         
-        //# 1. If statment, square is surrounded by wrong no. 
+        //# 1. If statment, square is surrounded by wrong no. of lines, then add to Arraylist int[]
+        
+        if(lines_num != p.Puzzle[i][j]){
+            
+        }
         
         
         return null;
