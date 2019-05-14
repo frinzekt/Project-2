@@ -44,7 +44,6 @@ public class AnalyzeSolution
         return 0; //returns 0 if index is illegal
     }
 
-
     /**
      * Returns all squares in p that are surrounded by the wrong number of line segments.
      * Each item on the result will be an int[2] containing the indices of a square.
@@ -64,7 +63,7 @@ public class AnalyzeSolution
                 }
             }
         }
-        
+
         return BadSquares;
     }
 
@@ -77,6 +76,10 @@ public class AnalyzeSolution
     public static ArrayList<int[]> getConnections(Puzzle p, int r, int c)
     {
         // COMPLETE THIS 9
+        
+        
+        
+        
         return null;
     }
 
@@ -88,7 +91,29 @@ public class AnalyzeSolution
     public static int[] lineSegments(Puzzle p)
     {
         // COMPLETE THIS 10
-        return null;
+        int sum = 0;
+        int r = 0;
+        int c = 0;
+
+        for(int i=0; i<=p.getRowSize(); i++){
+            for(int j=0; j<=p.getColSize();j++){
+                if(j<p.getColSize()){
+                    if(p.getHorizontal()[i][j] == true){
+                        sum++;
+                        r=i;
+                        c=j;
+                    }
+                }
+                
+                if(i<p.getRowSize()){
+                    if(p.getVertical()[i][j] == true){
+                        sum++;
+                    }
+                }
+            }
+        }
+        int[] segment_return = {sum,r,c};
+        return segment_return;
     }
 
     /**

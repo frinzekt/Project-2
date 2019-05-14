@@ -123,7 +123,7 @@ public class SlitherLink implements MouseListener
                 x_next = x + square_size;
                 xave = (x+x_next)/2;
 
-                sc.drawCircle(x,y,radius,Color.black);
+                sc.drawDisc(x,y,radius,Color.black);
                 
                 //drawRectangle(x1,y1,x2,y2,color);
                 if(i<row_size){ //#vertical_line depends on row_size
