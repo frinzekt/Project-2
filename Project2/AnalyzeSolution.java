@@ -38,7 +38,10 @@ public class AnalyzeSolution
         if(veriz[r][c+1] == true){
             lines_num += 1;
         }
-        return lines_num;
+        if(lines_num > 0){
+            return lines_num;
+        }
+        return 0;
     }
 
 
@@ -50,6 +53,9 @@ public class AnalyzeSolution
     public static ArrayList<int[]> badSquares(Puzzle p)
     {
         // COMPLETE THIS 8
+        
+        //# 1. If statment, square is surrounded by wrong no. 
+        
         
         return null;
     }
