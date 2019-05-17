@@ -82,7 +82,10 @@ public class AnalyzeSolution
         
         boolean[][] horiz = p.getHorizontal();
         boolean[][] veriz = p.getVertical();
+       
         
+        /*
+         *  
         if(r >= sizePuzzle && r >= 1 && c <= sizePuzzle  && horiz[r][c] == true){
             int[] coord = {r, c};
             lonelyDot.add(coord);
@@ -101,7 +104,40 @@ public class AnalyzeSolution
         if(r >= sizePuzzle && c <= sizePuzzle  && veriz[r - 1][c] == true){
             int[] coord = {r, c};
             lonelyDot.add(coord);
+         */
+        try{ 
+            if(horiz[r][c]==true){
+                int[] coord = {r, c+1};
+                lonelyDot.add(coord);
+            }
         }
+        catch(IndexOutOfBoundsException e){}
+        
+        try{ 
+            if(horiz[r][c-1]==true){
+                int[] coord = {r, c-1};
+                lonelyDot.add(coord);
+            }
+        }
+        catch(IndexOutOfBoundsException e){}
+        
+        try{ 
+            if(veriz[r][c]==true){
+                int[] coord = {r+1, c};
+                lonelyDot.add(coord);
+            }
+        }
+        catch(IndexOutOfBoundsException e){}
+        
+        try{ 
+            if(veriz[r-1][c]==true){
+                int[] coord = {r-1, c};
+                lonelyDot.add(coord);
+            }
+        }
+        catch(IndexOutOfBoundsException e){}
+        
+        
          return lonelyDot;
     }
 
@@ -147,6 +183,7 @@ public class AnalyzeSolution
     public static String tracePath(Puzzle p, int r, int c)
     {
         // COMPLETE THIS 11
+        /*
         try{
 
             for(){}
@@ -155,7 +192,7 @@ public class AnalyzeSolution
         catch (FileNotFoundException e) {
             
         }
-
+*/
 
         return "";
     }
