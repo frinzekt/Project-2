@@ -191,7 +191,8 @@ public class AnalyzeSolution
         do{ 
             count_loop++;
             Connections = getConnections(p,current_coord[0],current_coord[1]); //fetches 1-4 coordinates
-            Connections.remove(previous_coord); //REMOVE PREVIOUS COORDINATE IN LIST SO THAT IT DOES NOT BACKTRACK 
+            
+            //REMOVE PREVIOUS COORDINATE IN LIST SO THAT IT DOES NOT BACKTRACK 
             int delete_index = 0;
             for (int[] coord : Connections){
                 if((coord[0] == previous_coord[0]) && (coord[1] == previous_coord[1])){
