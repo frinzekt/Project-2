@@ -7,6 +7,7 @@
  * @version v1.0
  */
 import java.util.*;
+import java.util.ArrayList;
 
 public class AnalyzeSolution
 {
@@ -67,6 +68,14 @@ public class AnalyzeSolution
         return BadSquares;
     }
 
+    private static boolean IsBetween_Inclusive(int lower, int upper, int target){
+        if((lower<=target) && (target<=upper)){
+            return true;
+        }
+        return false;
+
+    }
+
     /**
      * Returns all dots connected by a single line segment to Dot r,c in p.
      * Each item on the result will be an int[2] containing the indices of a dot.
@@ -79,66 +88,46 @@ public class AnalyzeSolution
         ArrayList<int[]> lonelyDot = new ArrayList<int[]>();
         int sizePuzzle = p.size();
         //int coord = {r,c}
-        
+
         boolean[][] horiz = p.getHorizontal();
         boolean[][] veriz = p.getVertical();
-       
-        
-        /*
-         *  
-        if(r >= sizePuzzle && r >= 1 && c <= sizePuzzle  && horiz[r][c] == true){
-            int[] coord = {r, c};
-            lonelyDot.add(coord);
-        }
 
-        if(r >= sizePuzzle && c <= sizePuzzle  && horiz[r][c - 1] == true){
-            int[] coord = {r, c};
-            lonelyDot.add(coord);
-        }
+        if(IsBetween_Inclusive(0,p.getRowSize()+1,r) && IsBetween_Inclusive(0,p.getColSize()+1,c)){
+            try{ //RIGHT
+                if(horiz[r][c]){
+                    int[] coord = {r, c+1};
+                    lonelyDot.add(coord);
+                }
+            }
+            catch(IndexOutOfBoundsException e){}
 
-        if(r >= sizePuzzle && c <= sizePuzzle  && veriz[r][c] == true){
-            int[] coord = {r, c};
-            lonelyDot.add(coord);
-        }
+            try{ //LEFT
+                if(horiz[r][c-1]){
+                    int[] coord = {r, c-1};
+                    lonelyDot.add(coord);
+                }
+            }
+            catch(IndexOutOfBoundsException e){}
 
-        if(r >= sizePuzzle && c <= sizePuzzle  && veriz[r - 1][c] == true){
-            int[] coord = {r, c};
-            lonelyDot.add(coord);
-         */
-        try{ 
-            if(horiz[r][c]==true){
-                int[] coord = {r, c+1};
-                lonelyDot.add(coord);
+            try{  //DOWN
+                if(veriz[r][c]){
+                    int[] coord = {r+1, c};
+                    lonelyDot.add(coord);
+                }
             }
-        }
-        catch(IndexOutOfBoundsException e){}
-        
-        try{ 
-            if(horiz[r][c-1]==true){
-                int[] coord = {r, c-1};
-                lonelyDot.add(coord);
+            catch(IndexOutOfBoundsException e){}
+
+            try{ //UP
+                if(veriz[r-1][c]){
+                    int[] coord = {r-1, c};
+                    lonelyDot.add(coord);
+                }
             }
+            catch(IndexOutOfBoundsException e){}
+
+            return lonelyDot;
         }
-        catch(IndexOutOfBoundsException e){}
-        
-        try{ 
-            if(veriz[r][c]==true){
-                int[] coord = {r+1, c};
-                lonelyDot.add(coord);
-            }
-        }
-        catch(IndexOutOfBoundsException e){}
-        
-        try{ 
-            if(veriz[r-1][c]==true){
-                int[] coord = {r-1, c};
-                lonelyDot.add(coord);
-            }
-        }
-        catch(IndexOutOfBoundsException e){}
-        
-        
-         return lonelyDot;
+        return null;
     }
 
     /**
@@ -156,7 +145,7 @@ public class AnalyzeSolution
         for(int i=0; i<=p.getRowSize(); i++){
             for(int j=0; j<=p.getColSize();j++){
                 if(j<p.getColSize()){
-                    if(p.getHorizontal()[i][j] == true){
+                    if(p.getHorizontal()[i][j]){
                         sum++;
                         r=i;
                         c=j;
@@ -164,7 +153,7 @@ public class AnalyzeSolution
                 }
 
                 if(i<p.getRowSize()){
-                    if(p.getVertical()[i][j] == true){
+                    if(p.getVertical()[i][j]){
                         sum++;
                     }
                 }
@@ -183,18 +172,49 @@ public class AnalyzeSolution
     public static String tracePath(Puzzle p, int r, int c)
     {
         // COMPLETE THIS 11
-        /*
-        try{
 
-            for(){}
-        } 
+        int[] lineSegments_Returns = lineSegments(p);
+        int lineSegments = lineSegments_Returns[0];
 
-        catch (FileNotFoundException e) {
-            
+        int count_loop =1;
+
+        if(getConnections(p,r,c).size()==0){
+            return "No path";
         }
-*/
+        
+        int[] current_coord ={r,c}; //initial coordinate
+        
+        ArrayList<int[]> Connections = getConnections(p,current_coord[0],current_coord[1]);
+        int [] previous_coord = current_coord;
+        current_coord = Connections.get(0); 
+        
+        do{ 
+            count_loop++;
+            Connections = getConnections(p,current_coord[0],current_coord[1]); //fetches 1-4 coordinates
+            Connections.remove(previous_coord); //REMOVE PREVIOUS COORDINATE IN LIST SO THAT IT DOES NOT BACKTRACK 
+            int delete_index = 0;
+            for (int[] coord : Connections){
+                if((coord[0] == previous_coord[0]) && (coord[1] == previous_coord[1])){
+                    Connections.remove(delete_index);
+                    break;
+                }
+                delete_index++;
+            }
+            try{
+                previous_coord = current_coord;
+                current_coord = Connections.get(0);
+                
+                if(Connections.size()>=2){ //2 or 3 possible branching
+                    return "Branching line";
+                }
+            }
+            catch(IndexOutOfBoundsException e){
+                return "Dangling end";
+            } // ENDS OF THE LOOP AS current_coord = null
+        }while (!((current_coord[0]==r)&&(current_coord[1]==c)));//Repeat until it goes to back to the start
 
-        return "";
+
+        return count_loop+"";
     }
 
     /**
