@@ -76,11 +76,33 @@ public class AnalyzeSolution
     public static ArrayList<int[]> getConnections(Puzzle p, int r, int c)
     {
         // COMPLETE THIS 9
+        ArrayList<int[]> lonelyDot = new ArrayList<int[]>();
+        int sizePuzzle = p.size();
+        //int coord = {r,c}
         
+        boolean[][] horiz = p.getHorizontal();
+        boolean[][] veriz = p.getVertical();
         
-        
-        
-        return null;
+        if(r >= sizePuzzle && r >= 1 && c <= sizePuzzle  && horiz[r][c] == true){
+            int[] coord = {r, c};
+            lonelyDot.add(coord);
+        }
+
+        if(r >= sizePuzzle && c <= sizePuzzle  && horiz[r][c - 1] == true){
+            int[] coord = {r, c};
+            lonelyDot.add(coord);
+        }
+
+        if(r >= sizePuzzle && c <= sizePuzzle  && veriz[r][c] == true){
+            int[] coord = {r, c};
+            lonelyDot.add(coord);
+        }
+
+        if(r >= sizePuzzle && c <= sizePuzzle  && veriz[r - 1][c] == true){
+            int[] coord = {r, c};
+            lonelyDot.add(coord);
+        }
+         return lonelyDot;
     }
 
     /**
@@ -104,7 +126,7 @@ public class AnalyzeSolution
                         c=j;
                     }
                 }
-                
+
                 if(i<p.getRowSize()){
                     if(p.getVertical()[i][j] == true){
                         sum++;
@@ -125,6 +147,16 @@ public class AnalyzeSolution
     public static String tracePath(Puzzle p, int r, int c)
     {
         // COMPLETE THIS 11
+        try{
+
+            for(){}
+        } 
+
+        catch (FileNotFoundException e) {
+            
+        }
+
+
         return "";
     }
 

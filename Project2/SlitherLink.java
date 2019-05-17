@@ -1,6 +1,5 @@
 
 
-
 /**
  * SlitherLink does the user interaction for a square Slither Link puzzle.
  * 
@@ -32,12 +31,12 @@ public class SlitherLink implements MouseListener
 
         row_size = game.getRowSize();
         col_size = game.getColSize();
-        
+
         border = screen_height * 5 /100; //UP AND DOWN, LEFT AND RIGHT
 
         rect_width = (screen_width - 2 * border) / col_size;
         rect_height = (screen_height - 2 * border) / row_size;
-        
+
         square_size = 0;
         //Equating square_size to the minimum dimension to fit screen
         if (rect_width <= rect_height){ 
@@ -46,7 +45,7 @@ public class SlitherLink implements MouseListener
         else{
             square_size = rect_height;
         }
-        
+
         radius = square_size * 5 /100;
     }
 
@@ -91,8 +90,7 @@ public class SlitherLink implements MouseListener
     public void displayPuzzle()
     {
         // COMPLETE THIS 4a
-        
-        
+
         
         displayInitial();
 
@@ -101,7 +99,7 @@ public class SlitherLink implements MouseListener
     public void displayInitial(){
         //Display Blank Canvas
         sc.drawRectangle(0,0,screen_width,screen_height,Color.white);
-        
+
         int x = border; //holds current x,y coordinate drawer
         int y = border;
 
@@ -118,32 +116,29 @@ public class SlitherLink implements MouseListener
             y_next = y + square_size;
             yave = (y+y_next)/2;
 
-            for (int j=0; j<=col_size; j++){
+            for (int j = 0; j<=col_size; j++){
                 x = j * square_size + border;
                 x_next = x + square_size;
                 xave = (x+x_next)/2;
 
                 sc.drawDisc(x,y,radius,Color.black);
-                
+
                 //drawRectangle(x1,y1,x2,y2,color);
                 if(i<row_size){ //#vertical_line depends on row_size
                     if (game.getVertical()[i][j] == true){ //WILL DRAW ONLY IF THE LINE IS ACTIVATED
                         sc.drawRectangle(x-radius,y-radius,x+radius,y_next+radius, Color.black);// Draw Vertical Line
                     }
                 }
-                
+
                 if(j<col_size){ //#horizontal_line depends on col_size
                     if (game.getHorizontal()[i][j] == true){ //WILL DRAW ONLY IF THE LINE IS ACTIVATED
                         sc.drawRectangle(x-radius,y-radius,x_next+radius,y+radius, Color.black); // Draw Horizontal Line
                     }
                 }
-                
-                
-                
+
                 if ((i<row_size) && (j<col_size)){ // Puzzle is 1 less than the dot numbers
                     if (puzzle[i][j]!=-1){ // -1 is a free puzzle, does not display any number
                         sc.drawString(puzzle[i][j],xave,yave,Color.black);
-
                     }
                 }
 
@@ -193,34 +188,33 @@ public class SlitherLink implements MouseListener
     public void mousePressed(MouseEvent e) 
     {
         // COMPLETE THIS 6
-        
         int square_center = square_size/2;
-        
+
         //ACOUNTS FOR THE BORDER
         int x = e.getX()-border;
         int y = e.getY()-border;
-        
+
         //GETS x -> col equivalent to a box/square
         //     y -> row
         int square_x = x/square_size;
         int square_y = y/square_size;
-        
+
         //Conversion of an xy coordinate to single square AKA Origin Square
         //Origin Square - the square (0,0)
-        
+
         int origin_x = x - square_size * square_x;
         int origin_y = y - square_size * square_y;
-        
+
         //Figure out where click refers to -> vertical or horizontal click
         //by looking at the minimum distance to the bound of the origin
         // 0 <= x <= square_size
         // Minimum distance to bound (2 calculation)= MAX distance from center (1 calculation)
         // MAX distance using absolute value
-        
+
         //if the distance of x from center is more than y
         //then its a conversion in x -> col
         //else conversion in y -> row
-        
+
         if (Math.abs(origin_x-square_center) > Math.abs(origin_y - square_center)){
             if(origin_x <= square_center){ // if x is closer to the first col
                 verticalClick(square_y, square_x);
