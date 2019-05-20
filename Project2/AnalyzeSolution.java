@@ -227,6 +227,24 @@ public class AnalyzeSolution
     public static String finished(Puzzle p)
     {
         // COMPLETE THIS 12
-        return "";
+        int r = 0;
+        int c = 0;
+        
+        //ArrayList<int[]> dot = new ArrayList<int[]>();
+        
+        // if(getConnections(p,r,c).size() <= 3 && linesAroundSquare(p,r,c).size() <= dot){}
+        
+        if(badSquares(p).size() <= 0 ){
+            return "Puzzle is unfinished";
+        }
+        // Recieve String from tracePath -> into Int, if Int then Puzzle Completed
+        try{
+            String tracePath_return = tracePath(p,r,c); //TRACEPATH CAN RETURN NUMBER IN STRING FORMAT OR ERROR
+            int foo =  Integer.parseInt(tracePath_return); //integer parse   
+            return "Puzzle is finished";
+        }
+        catch(NullPointerException e){//IF INTEGER PARSING FAILS, RETURN ERROR
+            return "Puzzle is unfinished";
+        }     
     }
 }
