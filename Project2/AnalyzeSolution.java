@@ -181,17 +181,17 @@ public class AnalyzeSolution
         if(getConnections(p,r,c).size()==0){
             return "No path";
         }
-        
+
         int[] current_coord ={r,c}; //initial coordinate
-        
+
         ArrayList<int[]> Connections = getConnections(p,current_coord[0],current_coord[1]);
         int [] previous_coord = current_coord;
         current_coord = Connections.get(0); 
-        
+
         do{ 
             count_loop++;
             Connections = getConnections(p,current_coord[0],current_coord[1]); //fetches 1-4 coordinates
-            
+
             //REMOVE PREVIOUS COORDINATE IN LIST SO THAT IT DOES NOT BACKTRACK 
             int delete_index = 0;
             for (int[] coord : Connections){
@@ -204,7 +204,7 @@ public class AnalyzeSolution
             try{
                 previous_coord = current_coord;
                 current_coord = Connections.get(0);
-                
+
                 if(Connections.size()>=2){ //2 or 3 possible branching
                     return "Branching line";
                 }
@@ -213,7 +213,6 @@ public class AnalyzeSolution
                 return "Dangling end";
             } // ENDS OF THE LOOP AS current_coord = null
         }while (!((current_coord[0]==r)&&(current_coord[1]==c)));//Repeat until it goes to back to the start
-
 
         return count_loop+"";
     }
@@ -227,24 +226,48 @@ public class AnalyzeSolution
     public static String finished(Puzzle p)
     {
         // COMPLETE THIS 12
-        int r = 0;
-        int c = 0;
-        
-        //ArrayList<int[]> dot = new ArrayList<int[]>();
-        
-        // if(getConnections(p,r,c).size() <= 3 && linesAroundSquare(p,r,c).size() <= dot){}
-        
-        if(badSquares(p).size() <= 0 ){
-            return "Puzzle is unfinished";
-        }
-        // Recieve String from tracePath -> into Int, if Int then Puzzle Completed
+        int[] array_Lines = lineSegments(p);
+
+        int r = array_Lines[1];
+        int c = array_Lines[2];
+        String s = tracePath(p, r, c);
         try{
-            String tracePath_return = tracePath(p,r,c); //TRACEPATH CAN RETURN NUMBER IN STRING FORMAT OR ERROR
-            int foo =  Integer.parseInt(tracePath_return); //integer parse   
-            return "Puzzle is finished";
+            int int_tracePath =  Integer.parseInt(s);
+            if(int_tracePath == array_Lines[0]){
+                return"Finished";
+            }
+            if(badSquares(p).size() > 0){
+                return "Wrong number";
+            } 
+            return"Disconnected lines";
         }
-        catch(NullPointerException e){//IF INTEGER PARSING FAILS, RETURN ERROR
-            return "Puzzle is unfinished";
-        }     
+
+        catch(NumberFormatException e){
+            return s;
+        }
+
+        //NumberFormatException e
+        // Recieve String from tracePath -> into Int, if Int then Puzzle Completed
+        //try
+        // String tracePath_return = tracePath(p,r,c); //TRACEPATH CAN RETURN NUMBER IN STRING FORMAT OR ERROR
+
+        // if(Character.isDigit(tracePath_return.charAt(0))){
+        //     int int_tracePath =  Integer.parseInt(tracePath_return);
+        //     if(int_tracePath < array_Lines[0]) { // number of lines 
+        //         return "Disconnected lines"; 
+        //     }
+        // }
+
+        // if(badSquares(p).size() > 0){
+        //     return "Wrong number";
+        // }
+
+        //     return "";
+        // } if lineSegments = tracePath then puzzle is complete
+        // }else{
+        //     return tracePath_return;
+        // } 
+
     }
 }
+
