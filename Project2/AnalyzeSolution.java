@@ -68,7 +68,7 @@ public class AnalyzeSolution
         return BadSquares;
     }
 
-    private static boolean IsBetween_Inclusive(int lower, int upper, int target){
+    public static boolean IsBetween_Inclusive(int lower, int upper, int target){
         if((lower<=target) && (target<=upper)){
             return true;
         }
@@ -230,19 +230,19 @@ public class AnalyzeSolution
 
         int r = array_Lines[1];
         int c = array_Lines[2];
-        
+
         if(badSquares(p).size() > 0){
-                return "Wrong number";
-            } 
-            
+            return "Wrong number";
+        } 
+
         String s = tracePath(p, r, c);
         try{
             int int_tracePath =  Integer.parseInt(s);
-            
+
             if(int_tracePath == array_Lines[0]){
                 return"Finished";
             }
-            
+
             return"Disconnected lines";
         }
 
