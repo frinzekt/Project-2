@@ -178,6 +178,7 @@ public class SimpleCanvas
         canvas.addMouseListener(ml);
     }
     
+    
     class CanvasPane extends JPanel {
         public void paint(Graphics g) {
             g.drawImage(canvasImage,0,0,null);

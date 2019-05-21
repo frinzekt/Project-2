@@ -8,12 +8,18 @@
  */
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
-public class SlitherLink implements MouseListener
+
+public class SlitherLink extends JFrame implements MouseListener //, MenuListener
 {    
+    JMenuBar menuBar;
+    JMenuItem CheckSolution, Clear, LoadGame;
+    
     private Puzzle game;     // internal representation of the game
     private SimpleCanvas sc; // the display window
-
+    
+    //Screen dimension initialization
     private int screen_width;
     private int screen_height;
 
@@ -47,6 +53,19 @@ public class SlitherLink implements MouseListener
         }
 
         radius = square_size * 5 /100;
+        
+        menuBar = new JMenuBar();
+        
+        //Build menu itmes
+        CheckSolution = new JMenuItem("Check Solution");
+        //CheckSolution.addMenuListener(new thisMenuListener());
+        //Clear;
+        //LoadGame;
+        
+        menuBar.add(CheckSolution);
+        this.setJMenuBar(menuBar);
+        
+        
     }
 
     /**
@@ -62,6 +81,8 @@ public class SlitherLink implements MouseListener
 
         sc = new SimpleCanvas("Slither Link - Ethan & Frinze", screen_width, screen_height, Color.white);
         sc.addMouseListener(this); 
+       // sc.addMenuListener(this);
+        
         InitializeGraphicValues();
         displayPuzzle();
 
