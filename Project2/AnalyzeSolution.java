@@ -27,19 +27,19 @@ public class AnalyzeSolution
         boolean[][] horiz = p.getHorizontal();
         boolean[][] veriz = p.getVertical();
 
-        if(horiz[r][c] == true){
+        if(horiz[r][c] == true){ //up
             lines_num += 1;
         }
-        if(horiz[r + 1][c] == true){
+        if(horiz[r + 1][c] == true){ //down
             lines_num += 1;
         }
-        if(veriz[r][c] == true){
+        if(veriz[r][c] == true){ //left
             lines_num += 1;
         }
-        if(veriz[r][c+1] == true){
+        if(veriz[r][c+1] == true){ //right
             lines_num += 1;
         }
-        if(lines_num > 0){
+        if(lines_num > 0){ //line exist
             return lines_num;
         }
         return 0; //returns 0 if index is illegal
@@ -55,10 +55,11 @@ public class AnalyzeSolution
         // COMPLETE THIS 8
         //Initialization, ArrayList<int[2]>
         ArrayList<int[]> BadSquares = new ArrayList<>();
-
-        for (int i=0; i<p.getRowSize(); i++){
+        
+        //Checks every square if they match their corresponding number except if number = -1
+        for (int i=0; i<p.getRowSize(); i++){ 
             for(int j =0; j<p.getColSize();j++){
-                if((linesAroundSquare(p,i,j)!= p.getPuzzle()[i][j]) && p.getPuzzle()[i][j]!=-1){
+                if((linesAroundSquare(p,i,j)!= p.getPuzzle()[i][j]) && p.getPuzzle()[i][j]!=-1){ 
                     int[] coordinates = {i,j};
                     BadSquares.add(coordinates);
                 }
@@ -67,7 +68,11 @@ public class AnalyzeSolution
 
         return BadSquares;
     }
-
+    
+    /**
+     * Returns true if the target is between the bounds
+     * Otherwise return false
+     */
     public static boolean IsBetween_Inclusive(int lower, int upper, int target){
         if((lower<=target) && (target<=upper)){
             return true;
@@ -144,15 +149,15 @@ public class AnalyzeSolution
 
         for(int i=0; i<=p.getRowSize(); i++){
             for(int j=0; j<=p.getColSize();j++){
-                if(j<p.getColSize()){
+                if(j<p.getColSize()){ //Checks horizontal line w/ index restriction
                     if(p.getHorizontal()[i][j]){
                         sum++;
                         r=i;
-                        c=j;
+                        c=j; //assigns the valid line coordinate
                     }
                 }
 
-                if(i<p.getRowSize()){
+                if(i<p.getRowSize()){ //Checks vertical line w/ index restriction
                     if(p.getVertical()[i][j]){
                         sum++;
                     }
@@ -178,15 +183,15 @@ public class AnalyzeSolution
 
         int count_loop =1;
 
-        if(getConnections(p,r,c).size()==0){
+        if(getConnections(p,r,c).size()==0){ //If line segment exist
             return "No path";
         }
 
         int[] current_coord ={r,c}; //initial coordinate
 
         ArrayList<int[]> Connections = getConnections(p,current_coord[0],current_coord[1]);
-        int [] previous_coord = current_coord;
-        current_coord = Connections.get(0); 
+        int [] previous_coord = current_coord; 
+        current_coord = Connections.get(0);  //previous coordinate
 
         do{ 
             count_loop++;
@@ -201,6 +206,7 @@ public class AnalyzeSolution
                 }
                 delete_index++;
             }
+            
             try{
                 previous_coord = current_coord;
                 current_coord = Connections.get(0);
@@ -209,7 +215,7 @@ public class AnalyzeSolution
                     return "Branching line";
                 }
             }
-            catch(IndexOutOfBoundsException e){
+            catch(IndexOutOfBoundsException e){ // Connections.get(0) results in Exception for when no remaining path exist
                 return "Dangling end";
             } // ENDS OF THE LOOP AS current_coord = null
         }while (!((current_coord[0]==r)&&(current_coord[1]==c)));//Repeat until it goes to back to the start
@@ -231,11 +237,11 @@ public class AnalyzeSolution
         int r = array_Lines[1];
         int c = array_Lines[2];
 
-        if(badSquares(p).size() > 0){
+        if(badSquares(p).size() > 0){ // Number mismatch
             return "Wrong number";
         } 
 
-        String s = tracePath(p, r, c);
+        String s = tracePath(p, r, c); //string_return result
         try{
             int int_tracePath =  Integer.parseInt(s);
 
@@ -246,31 +252,11 @@ public class AnalyzeSolution
             return"Disconnected lines";
         }
 
-        catch(NumberFormatException e){
+        catch(NumberFormatException e){ //Parse Int is not possible for error message
             return s;
         }
 
-        //NumberFormatException e
-        // Recieve String from tracePath -> into Int, if Int then Puzzle Completed
-        //try
-        // String tracePath_return = tracePath(p,r,c); //TRACEPATH CAN RETURN NUMBER IN STRING FORMAT OR ERROR
-
-        // if(Character.isDigit(tracePath_return.charAt(0))){
-        //     int int_tracePath =  Integer.parseInt(tracePath_return);
-        //     if(int_tracePath < array_Lines[0]) { // number of lines 
-        //         return "Disconnected lines"; 
-        //     }
-        // }
-
-        // if(badSquares(p).size() > 0){
-        //     return "Wrong number";
-        // }
-
-        //     return "";
-        // } if lineSegments = tracePath then puzzle is complete
-        // }else{
-        //     return tracePath_return;
-        // } 
+        
 
     }
 }

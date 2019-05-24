@@ -154,8 +154,4 @@ public class Puzzle
         horizontal = new boolean[this.getRowSize()+1][this.getColSize()];
         vertical = new boolean[this.getRowSize()][this.getColSize()+1];
     }
-
-	public int tracePath(int r) {
-		return 0;
-	}
 }

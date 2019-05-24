@@ -42,6 +42,7 @@ comment6.params=
 comment6.target=void\ displaySLelements()
 comment7.params=order\ text
 comment7.target=void\ displaybtn(int,\ java.lang.String)
+comment7.text=\r\n\ Display\ buttons\ depending\ on\ order\ by\ vertical\ height\r\n
 comment8.params=
 comment8.target=void\ ClearScreen()
 comment9.params=r\ c

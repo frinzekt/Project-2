@@ -12,8 +12,6 @@ import javax.swing.*;
 
 public class SlitherLink extends JFrame implements MouseListener//, ActionListener
 {    
-    JMenuBar menuBar;
-    JMenuItem CheckSolution, Clear, LoadGame;
 
     private Puzzle game;     // internal representation of the game
     private SimpleCanvas sc; // the display window
@@ -40,7 +38,7 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
     private int border; //UP AND DOWN, LEFT AND RIGHT
     private int btn_size;
     private final int btn_y_space = 50;
-    
+
     private int rect_width;
     private int rect_height ;
     private int square_size ;
@@ -67,20 +65,10 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
 
         radius = square_size * 5 /100; //5% of square size
 
+        //Font Setup
         font_size = square_size * 20/100;
         screen_font =  new Font("Verdana", Font.BOLD, font_size);
         sc.setFont(screen_font);
-
-        menuBar = new JMenuBar();
-
-        //Build menu itmes
-        CheckSolution = new JMenuItem("Check Solution");
-        //CheckSolution.addMenuListener(new thisMenuListener());
-        //Clear;
-        //LoadGame;
-
-        menuBar.add(CheckSolution);
-        this.setJMenuBar(menuBar);
 
     }
 
@@ -152,11 +140,13 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
         int[][] puzzle = game.getPuzzle();
         //Dots: the board will have n+1 dots across and down.
         for (int i=0; i<=row_size; i++){
+            //Coordinate numerical initialization for y
             y = i * square_size + border;
             y_next = y + square_size;
             yave = (y+y_next)/2;
 
             for (int j = 0; j<=col_size; j++){
+                //Coordinate numberical initialization for x
                 x = j * square_size + border;
                 x_next = x + square_size;
                 xave = (x+x_next)/2;
@@ -199,8 +189,12 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
 
     }
 
+    /**
+     * Display buttons depending on order by vertical height
+     */
     public void displaybtn(int order, String text){
-        
+
+        //Button dimension initialization
         int btn_x_start = screen_width - btn_size - border;
         int btn_x_end = btn_x_start + btn_size;
         int xave = (btn_x_start + btn_x_end ) /2;
@@ -209,6 +203,7 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
         int btn_y_end =btn_y_start+ btn_size/2;
         int yave = (btn_y_start + btn_y_end ) /2;
 
+        //Draws rectangle and the text in it
         sc.drawRectangle(btn_x_start,btn_y_start,btn_x_end,btn_y_end, LineColor);
         sc.drawString(text,xave - font_size,yave + font_size/4,FontColor);
 
@@ -216,10 +211,15 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
 
     public void ClearScreen(){
         game.clear();   //CLEAR INTERNAL VIEW
+        
+        //Initialize Cross Array
+        horizontal_cross = new boolean[game.getRowSize()+1][game.getColSize()];
+        vertical_cross = new boolean[game.getRowSize()][game.getColSize()+1];
+        
+        
         displayPuzzle();
     }
-    
-   
+
 
     /**
      * Makes a horizontal click to the right of Dot r,c.
@@ -270,7 +270,7 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
 
     public void verticalRightClick(int r, int c)
     {
-        // COMPLETE THIS 5b
+
         //Vertical lines: the board can have n+1 vertical lines across, but only n rows of these down.
         if( (0<=r) && (r<vertical_cross.length) ){ //ROW CHECK
             if( (0<=c) && (c<vertical_cross[0].length) ){ //COL CHECK
@@ -302,14 +302,14 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
         else{ //BTN Clicks
             int y = e.getY() - border - btn_y_space;
             int order = y / (btn_size + btn_y_space);
-            
+
             int btn_y_start =border + btn_y_space*(order+1) + btn_size*(order);
             int btn_y_end =btn_y_start+ btn_size/2;
-        
+
             if(!(AnalyzeSolution.IsBetween_Inclusive(btn_y_start,btn_y_end,e.getY()))){ //Click outside btn
                 order=-1;
             }
-            
+
             if(order == 0){ //Clear btn
                 ClearScreen();
             }
@@ -317,7 +317,7 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
                 String return_string = AnalyzeSolution.finished(game);
                 infoBox(return_string, "Check Solution");
             }
-            
+
         }
     }
 
@@ -436,7 +436,7 @@ public class SlitherLink extends JFrame implements MouseListener//, ActionListen
     public void mouseExited(MouseEvent e) {
     }
 
-    public static void infoBox(String infoMessage, String titleBar)
+    public static void infoBox(String infoMessage, String titleBar) //MessageBox Display
     {
         JOptionPane.showMessageDialog(null, infoMessage,titleBar, JOptionPane.INFORMATION_MESSAGE);
     }

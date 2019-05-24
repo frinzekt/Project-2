@@ -11,6 +11,7 @@ comment3.target=badSquares(Puzzle)
 comment3.text=\r\n\ Returns\ all\ squares\ in\ p\ that\ are\ surrounded\ by\ the\ wrong\ number\ of\ line\ segments.\r\n\ Each\ item\ on\ the\ result\ will\ be\ an\ int[2]\ containing\ the\ indices\ of\ a\ square.\r\n\ The\ order\ of\ the\ items\ on\ the\ result\ is\ unimportant.\r\n
 comment4.params=lower\ upper\ target
 comment4.target=boolean\ IsBetween_Inclusive(int,\ int,\ int)
+comment4.text=\r\n\ Returns\ true\ if\ the\ target\ is\ between\ the\ bounds\r\n\ Otherwise\ return\ false\r\n
 comment5.params=p\ r\ c
 comment5.target=getConnections(Puzzle,\ int,\ int)
 comment5.text=\r\n\ Returns\ all\ dots\ connected\ by\ a\ single\ line\ segment\ to\ Dot\ r,c\ in\ p.\r\n\ Each\ item\ on\ the\ result\ will\ be\ an\ int[2]\ containing\ the\ indices\ of\ a\ dot.\r\n\ The\ order\ of\ the\ items\ on\ the\ result\ is\ unimportant.\r\n\ Returns\ null\ if\ the\ indices\ are\ illegal.\r\n
